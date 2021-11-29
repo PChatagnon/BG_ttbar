@@ -1,0 +1,62 @@
+! File: SD_pythia8.cmnd
+! This file contains commands to be read in for a Pythia8 run.
+! Lines not beginning with a letter or digit are comments.
+! Names are case-insensitive  -  but spellings-sensitive!
+! The changes here are illustrative, not always physics-motivated.
+
+! 1) Settings used in the main program.
+Main:numberOfEvents = 1000         ! number of events to generate
+Next:numberCount = 1000           ! print message every n events
+Main:timesAllowErrors = 10         ! how many aborts before run stops
+
+! 2) Settings related to output in init(), next() and stat().
+Init:showChangedSettings = on      ! list changed settings
+Init:showChangedParticleData = off ! list changed particle data
+Next:numberShowInfo = 3            ! print event information n times
+Next:numberShowProcess = 0         ! print process record n times
+Next:numberShowEvent = 0           ! print event record n times
+				
+! 3) Beam parameter settings. Values below agree with default ones.
+Beams:idA = 2212                   ! first beam, p = 2212, pbar = -2212
+Beams:idB = 2212                   ! second beam, p = 2212, pbar = -2212
+Beams:eCM = 13000.                 ! CM energy of collision
+Beams:setProductionScalesFromLHEF = off
+
+! 4) Common settings.
+Check:epTolErr = 0.01
+ParticleDecays:limitTau0 = on
+ParticleDecays:tau0Max = 10
+ParticleDecays:allowPhotonRadiation = on
+
+! 5) Optionally select diffractive model.
+SigmaDiffractive:mode = 2           ! the MBR model for diffraction
+Diffraction:doHard = on
+Diffraction:sampleType = 4          ! diffractive sample, MPI-checked.
+SigmaDiffractive:PomFlux = 7        ! The H1 Fit B parametrisation
+PDF:PomSet = 4                      ! dPDF, H1 2006 Fit B NLO
+PDF:pSet=LHAPDF6:NNPDF31_nnlo_as_0118
+
+! 6) Multiparton interactions and impact parameter picture.
+MultipartonInteractions:ecmPow=0.03344
+MultipartonInteractions:bProfile=2
+MultipartonInteractions:pT0Ref=1.41
+MultipartonInteractions:coreRadius=0.7634
+MultipartonInteractions:coreFraction=0.63
+MultipartonInteractions:alphaSvalue=0.118
+MultipartonInteractions:alphaSorder=2
+
+! 7) CP5 settings
+Tune:preferLHAPDF = 2
+Tune:pp 14                         ! use Tune CP5
+ColourReconnection:range=5.176
+SigmaTotal:zeroAXB=off
+SpaceShower:alphaSorder=2
+SpaceShower:alphaSvalue=0.118
+SigmaProcess:alphaSvalue=0.118
+SigmaProcess:alphaSorder=2
+TimeShower:alphaSorder=2
+TimeShower:alphaSvalue=0.118
+SigmaTotal:mode = 0
+SigmaTotal:sigmaEl = 21.89
+SigmaTotal:sigmaTot = 100.309
+
